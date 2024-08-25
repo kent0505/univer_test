@@ -21,8 +21,8 @@ class TxtField extends StatelessWidget {
       height: 60,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: AppColors.textField,
-        borderRadius: BorderRadius.circular(8),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(16),
       ),
       child: TextField(
         controller: controller,
@@ -61,7 +61,6 @@ class TxtField extends StatelessWidget {
           FocusManager.instance.primaryFocus?.unfocus();
         },
         onChanged: (value) {
-          controller.text = value;
           onChanged();
         },
       ),

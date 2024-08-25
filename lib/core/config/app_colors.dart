@@ -8,8 +8,6 @@ class AppColors {
 
   static const Color text1 = Color(0xffFFFFFF);
   static const Color text2 = Color(0xff979CB9);
-
-  static Color textField = const Color(0xffD9D9D9).withOpacity(0.24);
 }
 
 class Fonts {

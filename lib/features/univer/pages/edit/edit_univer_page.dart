@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/utils.dart';
-import '../../../core/config/app_colors.dart';
-import '../../../core/widgets/buttons/primary_button.dart';
-import '../../../core/widgets/custom_appbar.dart';
-import '../../../core/widgets/custom_scaffold.dart';
-import '../../../core/widgets/textfields/txt_field.dart';
-import '../../../core/widgets/texts/text_b.dart';
-import '../widgets/field_title.dart';
-import '../widgets/rate_card.dart';
+import '../../../../core/models/university.dart';
+import '../../../../core/utils.dart';
+import '../../../../core/config/app_colors.dart';
+import '../../../../core/widgets/buttons/primary_button.dart';
+import '../../../../core/widgets/custom_appbar.dart';
+import '../../../../core/widgets/custom_scaffold.dart';
+import '../../../../core/widgets/textfields/txt_field.dart';
+import '../../../../core/widgets/texts/text_b.dart';
+import '../../widgets/field_title.dart';
+import '../../widgets/rate_card.dart';
 
-class AddUniverPage extends StatefulWidget {
-  const AddUniverPage({super.key});
+class EditUniverPage extends StatefulWidget {
+  const EditUniverPage({super.key, required this.university});
+
+  final University university;
 
   @override
-  State<AddUniverPage> createState() => _AddUniverPageState();
+  State<EditUniverPage> createState() => _EditUniverPageState();
 }
 
-class _AddUniverPageState extends State<AddUniverPage> {
-  final controller1 = TextEditingController();
-  final controller2 = TextEditingController();
-  final controller3 = TextEditingController();
+class _EditUniverPageState extends State<EditUniverPage> {
+  final controller1 = TextEditingController(); // name
+  final controller2 = TextEditingController(); // location
+  final controller3 = TextEditingController(); // description
 
-  bool active = false;
+  bool active = true;
   int rate = 0;
 
   void checkActive() {
@@ -44,33 +47,31 @@ class _AddUniverPageState extends State<AddUniverPage> {
   }
 
   void onContinue() {
-    // context.read<UniverBloc>().add(
-    //       AddUniverEvent(
-    //         university: University(
-    //           id: getCurrentTimestamp(),
-    //           name: controller1.text,
-    //           location: controller2.text,
-    //           description: controller3.text,
-    //           rate: rate,
-    //           pros: ['Aa', 'Bb'],
-    //           cons: ['Cc', 'Dd'],
-    //           specialization: '',
-    //           priority: 'First',
-    //           tuition: 2000,
-    //           studyYears: 4,
-    //         ),
-    //       ),
-    //     );
-    // context.pop();
     context.push(
-      '/add-pros',
-      extra: {
-        'name': controller1.text,
-        'location': controller2.text,
-        'description': controller3.text,
-        'rate': rate,
-      },
+      '/edit2',
+      extra: University(
+        id: widget.university.id,
+        name: controller1.text,
+        location: controller2.text,
+        description: controller3.text,
+        rate: rate,
+        pros: widget.university.pros,
+        cons: widget.university.cons,
+        specialization: widget.university.specialization,
+        priority: widget.university.priority,
+        tuition: widget.university.tuition,
+        studyYears: widget.university.studyYears,
+      ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller1.text = widget.university.name;
+    controller2.text = widget.university.location;
+    controller3.text = widget.university.description;
+    rate = widget.university.rate;
   }
 
   @override
@@ -94,7 +95,7 @@ class _AddUniverPageState extends State<AddUniverPage> {
                 children: [
                   const SizedBox(height: 20),
                   const TextB(
-                    'New university',
+                    'Edit university',
                     fontSize: 32,
                     color: AppColors.yellow,
                   ),

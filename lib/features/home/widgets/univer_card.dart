@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/config/app_colors.dart';
 import '../../../core/models/university.dart';
 import '../../../core/widgets/texts/text_r.dart';
-import '../../univer/bloc/univer_bloc.dart';
 
 class UniverCard extends StatelessWidget {
   const UniverCard({super.key, required this.university});
@@ -23,14 +22,14 @@ class UniverCard extends StatelessWidget {
       ),
       child: CupertinoButton(
         onPressed: () {
-          context.read<UniverBloc>().add(DeleteUniverEvent(id: university.id));
+          context.push('/detail', extra: university);
         },
         padding: EdgeInsets.zero,
         child: Stack(
           children: [
             Column(
               children: [
-                const SizedBox(height: 21),
+                const SizedBox(height: 20),
                 TextR(university.name, fontSize: 24),
                 const SizedBox(height: 10),
                 TextR(

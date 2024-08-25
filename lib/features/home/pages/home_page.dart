@@ -50,6 +50,7 @@ class HomePage extends StatelessWidget {
                               );
                             },
                           ),
+                          SizedBox(height: 150 + getBottom(context)),
                         ],
                       ),
                     );
@@ -67,7 +68,7 @@ class HomePage extends StatelessWidget {
               child: PrimaryButton(
                 title: 'Add new university',
                 onPressed: () {
-                  context.push('/add');
+                  context.push('/add1');
                 },
               ),
             ),

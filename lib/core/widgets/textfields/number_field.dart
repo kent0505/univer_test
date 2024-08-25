@@ -8,11 +8,13 @@ class NumberField extends StatelessWidget {
     super.key,
     required this.controller,
     this.hintText = '',
+    this.length = 6,
     required this.onChanged,
   });
 
   final TextEditingController controller;
   final String hintText;
+  final int length;
   final void Function() onChanged;
 
   @override
@@ -20,15 +22,16 @@ class NumberField extends StatelessWidget {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        color: AppColors.textField,
-        borderRadius: BorderRadius.circular(8),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(16),
       ),
       child: TextField(
         controller: controller,
+        textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
         inputFormatters: [
           FilteringTextInputFormatter.digitsOnly,
-          LengthLimitingTextInputFormatter(6),
+          LengthLimitingTextInputFormatter(length),
           // FilteringTextInputFormatter.allow(RegExp("[a-zA-Zа-яА-Я]")),
         ],
         textCapitalization: TextCapitalization.sentences,
@@ -55,7 +58,6 @@ class NumberField extends StatelessWidget {
           FocusManager.instance.primaryFocus?.unfocus();
         },
         onChanged: (value) {
-          // controller.text = value;
           onChanged();
         },
       ),
