@@ -21,7 +21,7 @@ class PrimaryButton extends StatelessWidget {
       height: 50,
       width: 225,
       decoration: BoxDecoration(
-        color: AppColors.main,
+        color: active ? AppColors.main : AppColors.main.withOpacity(0.5),
         borderRadius: BorderRadius.circular(8),
       ),
       child: CupertinoButton(
@@ -31,6 +31,7 @@ class PrimaryButton extends StatelessWidget {
           child: TextR(
             title,
             fontSize: 16,
+            color: active ? AppColors.white : AppColors.white.withOpacity(0.5),
           ),
         ),
       ),

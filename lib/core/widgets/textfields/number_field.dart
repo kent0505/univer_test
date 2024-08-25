@@ -3,11 +3,11 @@ import 'package:flutter/services.dart';
 
 import '../../config/app_colors.dart';
 
-class TxtField extends StatelessWidget {
-  const TxtField({
+class NumberField extends StatelessWidget {
+  const NumberField({
     super.key,
     required this.controller,
-    this.hintText = '...',
+    this.hintText = '',
     required this.onChanged,
   });
 
@@ -34,17 +34,15 @@ class TxtField extends StatelessWidget {
         textCapitalization: TextCapitalization.sentences,
         style: const TextStyle(
           color: AppColors.white,
-          fontFamily: Fonts.medium,
+          fontSize: 20,
+          fontFamily: Fonts.regular,
         ),
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 0,
-            horizontal: 16,
-          ),
           hintText: hintText,
           hintStyle: TextStyle(
             color: AppColors.white.withOpacity(0.5),
-            fontFamily: Fonts.medium,
+            fontSize: 20,
+            fontFamily: Fonts.regular,
           ),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),

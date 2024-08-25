@@ -9,23 +9,26 @@ class NoData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset('assets/circle.svg'),
-            const SizedBox(width: 5),
-            const TextR('Not university yet', fontSize: 24),
-          ],
-        ),
-        const SizedBox(height: 11),
-        const TextR(
-          'Add the first university',
-          fontSize: 16,
-          color: AppColors.text2,
-        ),
-      ],
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset('assets/circle.svg'),
+              const SizedBox(width: 5),
+              const TextR('Not university yet', fontSize: 24),
+            ],
+          ),
+          const SizedBox(height: 11),
+          const TextR(
+            'Add the first university',
+            fontSize: 16,
+            color: AppColors.text2,
+          ),
+        ],
+      ),
     );
   }
 }

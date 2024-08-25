@@ -7,7 +7,7 @@ class TxtField extends StatelessWidget {
   const TxtField({
     super.key,
     required this.controller,
-    this.hintText = '...',
+    this.hintText = '',
     required this.onChanged,
   });
 
@@ -19,27 +19,36 @@ class TxtField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
         color: AppColors.textField,
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextField(
         controller: controller,
+        textAlign: TextAlign.center,
         inputFormatters: [
-          LengthLimitingTextInputFormatter(20),
+          LengthLimitingTextInputFormatter(100),
           // FilteringTextInputFormatter.allow(RegExp("[a-zA-Zа-яА-Я]")),
           // FilteringTextInputFormatter.digitsOnly,
         ],
         textCapitalization: TextCapitalization.sentences,
         style: const TextStyle(
           color: AppColors.white,
-          fontFamily: Fonts.medium,
+          fontSize: 20,
+          fontFamily: Fonts.regular,
         ),
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 0,
+            horizontal: 16,
+          ),
+          floatingLabelAlignment: FloatingLabelAlignment.center,
           hintText: hintText,
           hintStyle: TextStyle(
             color: AppColors.white.withOpacity(0.5),
-            fontFamily: Fonts.medium,
+            fontSize: 20,
+            fontFamily: Fonts.regular,
           ),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),

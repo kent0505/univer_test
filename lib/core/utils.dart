@@ -22,6 +22,13 @@ Future<void> saveData() async {
   prefs.setBool('onboard', false);
 }
 
+bool getButtonActive(List<TextEditingController> controllers) {
+  for (TextEditingController controller in controllers) {
+    if (controller.text.isEmpty) return false;
+  }
+  return true;
+}
+
 int getCurrentTimestamp() {
   return DateTime.now().millisecondsSinceEpoch ~/ 1000;
 }
@@ -35,6 +42,12 @@ double getBottom(BuildContext context) {
 }
 
 List<University> modelsList = [];
+
+Future<void> initHive() async {
+  await Hive.initFlutter();
+  // await Hive.deleteBoxFromDisk(boxName);
+  Hive.registerAdapter(UniversityAdapter());
+}
 
 Future<List<University>> getModels() async {
   final box = await Hive.openBox(boxName);
