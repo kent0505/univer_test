@@ -4,6 +4,7 @@ import '../../features/home/pages/home_page.dart';
 import '../../features/home/pages/settings_page.dart';
 import '../../features/splash/onboard_page.dart';
 import '../../features/splash/splash_page.dart';
+import '../../features/univer/pages/univer_page.dart';
 
 final routerConfig = GoRouter(
   initialLocation: '/',
@@ -23,6 +24,10 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/settings',
       builder: (context, state) => const SettingsPage(),
+    ),
+    GoRoute(
+      path: '/add',
+      builder: (context, state) => const UniverPage(),
     ),
   ],
 );

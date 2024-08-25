@@ -18,8 +18,8 @@ class _SplashPageState extends State<SplashPage> {
     await getData().then((value) {
       Future.delayed(const Duration(seconds: 2), () {
         if (onboard) {
-          // context.go('/onboard');
-          context.go('/home');
+          context.go('/onboard');
+          // context.go('/home');
         } else {
           context.go('/home');
         }

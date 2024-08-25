@@ -1,4 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../core/utils.dart';
+import '../../core/config/app_colors.dart';
+import '../../core/widgets/buttons/primary_button.dart';
+import '../../core/widgets/custom_scaffold.dart';
+import '../../core/widgets/texts/text_b.dart';
+import '../../core/widgets/texts/text_r.dart';
 
 class OnboardPage extends StatefulWidget {
   const OnboardPage({super.key});
@@ -8,11 +17,69 @@ class OnboardPage extends StatefulWidget {
 }
 
 class _OnboardPageState extends State<OnboardPage> {
+  String text1 = 'Add educational\ninstitutions that suit you';
+  String text2 =
+      'Make a list of the universities you\nplan to apply to and write down key\ninformation about each one for\nyourself.';
+  int id = 1;
+
+  void onNext() async {
+    if (id == 2) {
+      await saveData().then((_) {
+        context.go('/home');
+      });
+    } else {
+      setState(() {
+        text1 = 'Choose the facility that\nbest meets your needs';
+        text2 =
+            'Consider the terms and conditions\nof each university and choose the\none that suits you best.';
+        id = 2;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        children: [],
+    return CustomScaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 26),
+        child: Column(
+          children: [
+            SizedBox(height: 64 + getStatusBar(context)),
+            Center(
+              child: TextB(
+                text1,
+                fontSize: 32,
+                center: true,
+              ),
+            ),
+            const Spacer(),
+            SvgPicture.asset('assets/o$id.svg'),
+            const Spacer(),
+            TextR(
+              text2,
+              fontSize: 24,
+              color: AppColors.text2,
+              center: true,
+            ),
+            const Spacer(),
+            PrimaryButton(
+              title: 'Next',
+              onPressed: onNext,
+            ),
+            const SizedBox(height: 40),
+            CupertinoButton(
+              onPressed: () {},
+              padding: EdgeInsets.zero,
+              minSize: 20,
+              child: const TextR(
+                'Terms of use  |  Privacy Policy',
+                fontSize: 15,
+                color: AppColors.text2,
+              ),
+            ),
+            SizedBox(height: 18 + getBottom(context)),
+          ],
+        ),
       ),
     );
   }
