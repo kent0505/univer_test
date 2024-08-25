@@ -35,6 +35,16 @@ class _EditProsPageState extends State<EditProsPage> {
     });
   }
 
+  void onRemove1() {
+    controllers1.removeLast();
+    checkActive();
+  }
+
+  void onRemove2() {
+    controllers2.removeLast();
+    checkActive();
+  }
+
   void onMore1() {
     controllers1.add(TextEditingController());
     checkActive();
@@ -115,7 +125,11 @@ class _EditProsPageState extends State<EditProsPage> {
                       center: true,
                     ),
                     const SizedBox(height: 50),
-                    FieldTitle('Pros', onMore: onMore1),
+                    FieldTitle(
+                      'Pros',
+                      onMore: onMore1,
+                      onRemove: controllers1.length >= 2 ? onRemove1 : null,
+                    ),
                     const SizedBox(height: 10),
                     ...List.generate(
                       controllers1.length,
@@ -133,7 +147,11 @@ class _EditProsPageState extends State<EditProsPage> {
                       },
                     ),
                     const SizedBox(height: 20),
-                    FieldTitle('Cons', onMore: onMore2),
+                    FieldTitle(
+                      'Cons',
+                      onMore: onMore2,
+                      onRemove: controllers2.length >= 2 ? onRemove2 : null,
+                    ),
                     const SizedBox(height: 10),
                     ...List.generate(
                       controllers2.length,

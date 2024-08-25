@@ -4,10 +4,16 @@ import '../../../core/config/app_colors.dart';
 import '../../../core/widgets/texts/text_r.dart';
 
 class FieldTitle extends StatelessWidget {
-  const FieldTitle(this.title, {super.key, this.onMore});
+  const FieldTitle(
+    this.title, {
+    super.key,
+    this.onMore,
+    this.onRemove,
+  });
 
   final String title;
   final void Function()? onMore;
+  final void Function()? onRemove;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +27,17 @@ class FieldTitle extends StatelessWidget {
         ),
         if (onMore != null) ...[
           const Spacer(),
+          if (onRemove != null)
+            CupertinoButton(
+              onPressed: onRemove,
+              padding: EdgeInsets.zero,
+              minSize: 20,
+              child: const TextR(
+                'Remove',
+                fontSize: 20,
+              ),
+            ),
+          const SizedBox(width: 15),
           CupertinoButton(
             onPressed: onMore,
             padding: EdgeInsets.zero,
