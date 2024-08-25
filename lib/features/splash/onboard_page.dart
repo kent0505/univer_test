@@ -17,9 +17,9 @@ class OnboardPage extends StatefulWidget {
 }
 
 class _OnboardPageState extends State<OnboardPage> {
-  String text1 = 'Add educational\ninstitutions that suit you';
+  String text1 = 'Add educational institutions that suit you';
   String text2 =
-      'Make a list of the universities you\nplan to apply to and write down key\ninformation about each one for\nyourself.';
+      'Make a list of the universities you plan to apply to and write down key information about each one for yourself.';
   int id = 1;
 
   void onNext() async {
@@ -29,9 +29,9 @@ class _OnboardPageState extends State<OnboardPage> {
       });
     } else {
       setState(() {
-        text1 = 'Choose the facility that\nbest meets your needs';
+        text1 = 'Choose the facility that best meets your needs';
         text2 =
-            'Consider the terms and conditions\nof each university and choose the\none that suits you best.';
+            'Consider the terms and conditions of each university and choose the one that suits you best.';
         id = 2;
       });
     }
@@ -52,9 +52,12 @@ class _OnboardPageState extends State<OnboardPage> {
                 center: true,
               ),
             ),
-            const Spacer(),
-            SvgPicture.asset('assets/o$id.svg'),
-            const Spacer(),
+            const SizedBox(height: 20),
+            Expanded(
+              flex: 5,
+              child: SvgPicture.asset('assets/o$id.svg'),
+            ),
+            const SizedBox(height: 20),
             TextR(
               text2,
               fontSize: 24,
