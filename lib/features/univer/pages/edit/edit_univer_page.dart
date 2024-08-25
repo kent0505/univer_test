@@ -89,51 +89,58 @@ class _EditUniverPageState extends State<EditUniverPage> {
         children: [
           const CustomAppbar(),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  const TextB(
-                    'Edit university',
-                    fontSize: 32,
-                    color: AppColors.yellow,
+            child: Stack(
+              children: [
+                ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  children: [
+                    const SizedBox(height: 20),
+                    const TextB(
+                      'Edit university',
+                      fontSize: 32,
+                      color: AppColors.yellow,
+                    ),
+                    const SizedBox(height: 50),
+                    const FieldTitle('University name'),
+                    const SizedBox(height: 10),
+                    TxtField(
+                      controller: controller1,
+                      onChanged: checkActive,
+                    ),
+                    const SizedBox(height: 20),
+                    const FieldTitle('University location'),
+                    const SizedBox(height: 10),
+                    TxtField(
+                      controller: controller2,
+                      onChanged: checkActive,
+                    ),
+                    const SizedBox(height: 20),
+                    const FieldTitle('Description of the University'),
+                    const SizedBox(height: 10),
+                    TxtField(
+                      controller: controller3,
+                      onChanged: checkActive,
+                    ),
+                    const SizedBox(height: 48),
+                    RateCard(
+                      rate: rate,
+                      onPressed: onRate,
+                    ),
+                    SizedBox(height: 150 + getBottom(context)),
+                  ],
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 77 + getBottom(context)),
+                    child: PrimaryButton(
+                      title: 'Continue',
+                      active: active,
+                      onPressed: onContinue,
+                    ),
                   ),
-                  const SizedBox(height: 50),
-                  const FieldTitle('University name'),
-                  const SizedBox(height: 10),
-                  TxtField(
-                    controller: controller1,
-                    onChanged: checkActive,
-                  ),
-                  const SizedBox(height: 20),
-                  const FieldTitle('University location'),
-                  const SizedBox(height: 10),
-                  TxtField(
-                    controller: controller2,
-                    onChanged: checkActive,
-                  ),
-                  const SizedBox(height: 20),
-                  const FieldTitle('Description of the University'),
-                  const SizedBox(height: 10),
-                  TxtField(
-                    controller: controller3,
-                    onChanged: checkActive,
-                  ),
-                  const SizedBox(height: 48),
-                  RateCard(
-                    rate: rate,
-                    onPressed: onRate,
-                  ),
-                  const Spacer(),
-                  PrimaryButton(
-                    title: 'Continue',
-                    active: active,
-                    onPressed: onContinue,
-                  ),
-                  SizedBox(height: 77 + getBottom(context)),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

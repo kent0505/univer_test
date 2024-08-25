@@ -115,11 +115,13 @@ class _AddSpecializationPageState extends State<AddSpecializationPage> {
                         active: controller2.text == 'First',
                         onPressed: onPriority,
                       ),
+                      const SizedBox(width: 5),
                       PriorityCard(
                         title: 'Second',
                         active: controller2.text == 'Second',
                         onPressed: onPriority,
                       ),
+                      const SizedBox(width: 5),
                       PriorityCard(
                         title: 'Third',
                         active: controller2.text == 'Third',

@@ -96,70 +96,79 @@ class _EditSpecializationPageState extends State<EditSpecializationPage> {
         children: [
           const CustomAppbar(),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  const TextB(
-                    'New university',
-                    fontSize: 32,
-                    color: AppColors.yellow,
+            child: Stack(
+              children: [
+                ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  children: [
+                    const SizedBox(height: 20),
+                    const TextB(
+                      'New university',
+                      fontSize: 32,
+                      color: AppColors.yellow,
+                    ),
+                    const SizedBox(height: 50),
+                    const FieldTitle('Name of the specialization'),
+                    const SizedBox(height: 10),
+                    TxtField(
+                      controller: controller1,
+                      onChanged: checkActive,
+                    ),
+                    const SizedBox(height: 20),
+                    const FieldTitle('Priority'),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        PriorityCard(
+                          title: 'First',
+                          active: controller2.text == 'First',
+                          onPressed: onPriority,
+                        ),
+                        const SizedBox(width: 5),
+                        PriorityCard(
+                          title: 'Second',
+                          active: controller2.text == 'Second',
+                          onPressed: onPriority,
+                        ),
+                        const SizedBox(width: 5),
+                        PriorityCard(
+                          title: 'Third',
+                          active: controller2.text == 'Third',
+                          onPressed: onPriority,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    const FieldTitle('Tuition fees'),
+                    const SizedBox(height: 10),
+                    NumberField(
+                      controller: controller3,
+                      onChanged: checkActive,
+                    ),
+                    const SizedBox(height: 20),
+                    const FieldTitle('Years of study'),
+                    const SizedBox(height: 10),
+                    NumberField(
+                      controller: controller4,
+                      length: 2,
+                      onChanged: checkActive,
+                    ),
+                    SizedBox(height: 150 + getBottom(context)),
+                  ],
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 77 + getBottom(context)),
+                    child: PrimaryButton(
+                      title: 'Edit',
+                      active: active,
+                      onPressed: onEdit,
+                    ),
                   ),
-                  const SizedBox(height: 50),
-                  const FieldTitle('Name of the specialization'),
-                  const SizedBox(height: 10),
-                  TxtField(
-                    controller: controller1,
-                    onChanged: checkActive,
-                  ),
-                  const SizedBox(height: 20),
-                  const FieldTitle('Priority'),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      PriorityCard(
-                        title: 'First',
-                        active: controller2.text == 'First',
-                        onPressed: onPriority,
-                      ),
-                      PriorityCard(
-                        title: 'Second',
-                        active: controller2.text == 'Second',
-                        onPressed: onPriority,
-                      ),
-                      PriorityCard(
-                        title: 'Third',
-                        active: controller2.text == 'Third',
-                        onPressed: onPriority,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  const FieldTitle('Tuition fees'),
-                  const SizedBox(height: 10),
-                  NumberField(
-                    controller: controller3,
-                    onChanged: checkActive,
-                  ),
-                  const SizedBox(height: 20),
-                  const FieldTitle('Years of study'),
-                  const SizedBox(height: 10),
-                  NumberField(
-                    controller: controller4,
-                    length: 2,
-                    onChanged: checkActive,
-                  ),
-                  const Spacer(),
-                  PrimaryButton(
-                    title: 'Edit',
-                    active: active,
-                    onPressed: onEdit,
-                  ),
-                  SizedBox(height: 77 + getBottom(context)),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
